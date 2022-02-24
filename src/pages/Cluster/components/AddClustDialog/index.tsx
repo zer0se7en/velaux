@@ -86,19 +86,23 @@ class AddClustDialog extends React.Component<Props, State> {
           dashboardURL: values.dashboardURL,
           kubeConfig: values.kubeConfig,
           labels: cluster.labels,
-        }).then(() => {
-          Message.success(<Translation>cluster update success</Translation>);
-          this.resetField();
-          this.props.onOK();
+        }).then((re: any) => {
+          if (re) {
+            Message.success(<Translation>cluster update success</Translation>);
+            this.resetField();
+            this.props.onOK();
+          }
         });
       } else {
         this.props.dispatch({
           type: 'clusters/createCluster',
           payload: values,
-          callback: () => {
-            Message.success(<Translation>cluster add success</Translation>);
-            this.resetField();
-            this.props.onOK();
+          callback: (re: any) => {
+            if (re) {
+              Message.success(<Translation>cluster add success</Translation>);
+              this.resetField();
+              this.props.onOK();
+            }
           },
         });
       }
@@ -164,7 +168,7 @@ class AddClustDialog extends React.Component<Props, State> {
         onOk={this.onOk}
         onCancel={this.onClose}
         onClose={this.onClose}
-        footerActions={['ok', 'cancel']}
+        footerActions={['cancel', 'ok']}
         footerAlign="center"
       >
         <Loading visible={editClusterName && !editMode ? true : false} style={{ width: '100%' }}>

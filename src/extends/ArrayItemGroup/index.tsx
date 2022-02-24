@@ -1,13 +1,12 @@
 import React from 'react';
 import { Icon, Loading, Grid } from '@b-design/ui';
-import { If } from 'tsx-control-statements/components';
 import './index.less';
 
 type Props = {
   id: string;
   children?: React.ReactNode;
   loading?: boolean;
-  labelTitle: string;
+  labelTitle: string | React.ReactElement;
   delete: (id: string) => void;
 };
 
@@ -15,7 +14,7 @@ type State = {
   closed: boolean | undefined;
 };
 
-class SpectionGroup extends React.Component<Props, State> {
+class ArrayItemGroup extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -62,16 +61,11 @@ class SpectionGroup extends React.Component<Props, State> {
               </Col>
             </Row>
           </div>
-          <If condition={!closed}>
-            <div className="spection-group-box">{children}</div>
-          </If>
-          <If condition={closed}>
-            <div className="spection-group-box disable">{children}</div>
-          </If>
+          <div className={`array-item-group-box ${closed ? 'disable' : ''}`}>{children}</div>
         </div>
       </Loading>
     );
   }
 }
 
-export default SpectionGroup;
+export default ArrayItemGroup;
