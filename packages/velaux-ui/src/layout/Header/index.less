@@ -1,0 +1,95 @@
+.layout-top-bar {
+  width: 100%;
+  padding: 0 16px;
+  box-shadow: 5px 0 8px #888;
+  cursor: auto !important;
+  .logo {
+    width: 200px;
+  }
+  .cycle-mode {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  .nav-wrapper {
+    position: relative;
+    width: 100%;
+    height: 48px;
+    .logo {
+      display: flex;
+      align-items: center;
+      margin-left: 9px;
+      border-radius: 3px;
+      img {
+        height: 30px;
+      }
+    }
+  }
+  .right {
+    display: flex;
+    float: right;
+    height: 48px;
+    margin-left: auto;
+    overflow: hidden;
+    .vela-item {
+      display: flex;
+      align-items: center;
+      justify-items: center;
+      height: 48px;
+      padding: 0 8px;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s;
+      a {
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+    .user-item {
+      padding: 0 8px;
+      span {
+        margin-left: 8px;
+      }
+    }
+  }
+  .workspace-items {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100%;
+    .item {
+      line-height: var(--layout-header-height);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: #fff;
+      padding: 0 var(--spacing-4);
+      img {
+        width: 30px;
+      }
+      &:hover,
+      &.active {
+        background: var(--hover-color);
+      }
+      svg {
+        margin-right: var(--spacing-2);
+      }
+    }
+  }
+}
+.margin-left-10 {
+  margin-left: 10px;
+}
+.margin-top-10 {
+  margin-top: 10px;
+}
+.user-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 32px;
+  .next-btn-helper {
+    font-size: 12px;
+  }
+}

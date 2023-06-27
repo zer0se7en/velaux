@@ -5,8 +5,12 @@ coverage/
 
 node_modules/
 
-src/assets/
+packages/velaux-ui/src/assets/
 .DS_Store
 public
 
 *.d.ts
+
+dist
+
+pkg/

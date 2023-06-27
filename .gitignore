@@ -28,3 +28,19 @@ package-lock.json
 yarn-error.log
 
 .DS_Store
+dist
+
+/packages/**/compiled
+.yarn/.cache/
+.yarn/cache/
+.yarn/unplugged
+.yarn/install-state.gz
+
+.pnp.*
+
+tsconfig.tsbuildinfo
+
+e2e-plugins
+
+npm-artifacts
+bin

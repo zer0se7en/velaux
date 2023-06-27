@@ -1,28 +1,77 @@
 ![alt](docs/images/KubeVela-03.png)
 
-# Velaux
+[![Go Report Card](https://goreportcard.com/badge/github.com/kubevela/velaux)](https://goreportcard.com/report/github.com/kubevela/velaux)
+![Docker Pulls](https://img.shields.io/docker/pulls/oamdev/velaux)
 
 ## Overview
 
-The [KubeVela](https://github.com/oam-dev/kubevela) User Experience (UX) Dashboard. Designed as an extensible, application-oriented delivery control panel.
+[VelaUX](https://github.com/kubevela/velaux) is a web portal for KubeVela end users, and also functions as an opinionated application delivery platform. Additionally, it operates as a highly adaptable plugin framework, empowering developers to create bespoke plugins and smoothly integrate them into the KubeVela platform. This approach delivers unparalleled flexibility and customization options for scaling up the platform's capabilities.
 
-## Quickstart
+### Highlights
+
+*Customizable User Interface*: With VelaUX, enterprises can tailor the user interface to their specific needs for managing applications and infrastructure. This feature leads to a more intuitive and efficient user experience, resulting in increased productivity and better resource utilization.
+
+*Easy Integration*: VelaUX is designed for seamless integration with the KubeVela platform, simplifying the deployment and management of cloud-native atomic capabilities within the platform. This makes it easier for enterprises to build platforms that meet their needs for continuous application delivery, observability, security, and other requirements based on these cloud-native atomic capabilities.
+
+*Out-of-Box Platform*: VelaUX provides a comprehensive set of features that empower enterprises to deploy and monitor their applications effectively. These features include multi-cluster and multi-environment support, pipeline management, observability, and more. Additionally, VelaUX streamlines the complexities of Kubernetes, making it simpler for users to manage their deployments.
+
+## Quick Start
+
+### Users
+
+Please refer to this guide to install: [https://kubevela.net/docs/install](https://kubevela.net/docs/install)
+
+### Developers
+
+#### Build the frontend
+
+Make sure you have installed [yarn 2.0](https://yarnpkg.com/getting-started/install), This is required.
+
+Install frontend dependencies and build the frontend.
 
 ```shell
 yarn install
-yarn start
+yarn build
 ```
 
-Configure the API server address locally.
+#### Start the server
 
-```shell
-echo "BASE_DOMAIN='http://127.0.0.1:8000'" > .env
-```
+1. Install the Go 1.19+.
+2. Prepare a KubeVela core environment.
+
+  ```shell
+  ## Linux or Mac
+  curl -fsSl https://static.kubevela.net/script/install-velad.sh | bash
+  ## Windows
+  powershell -Command "iwr -useb https://static.kubevela.net/script/install-velad.ps1 | iex"
+
+  velad install
+  ```
+
+3. Init the dependencies.
+
+  ```shell
+  vela addon enable ./addon replicas=0
+  ```
+
+4. Start the server on local
+
+  ```shell
+  # Install all dependencies
+  go mod tidy
+
+  # Setting the kube config
+  export KUBECONFIG=$(velad kubeconfig --host)
+
+  # Start the server
+  make run-server
+  ```
+
+Then, you can open the http://127.0.0.1:8000. More info refer to [contributing](./docs/contributing/velaux.md)
 
 ## Community
 
 - Slack:  [CNCF Slack](https://slack.cncf.io/) #kubevela channel (*English*)
-- Gitter: [oam-dev](https://gitter.im/oam-dev/community) (*English*)
 - [DingTalk Group](https://page.dingtalk.com/wow/dingtalk/act/en-home): `23310022` (*Chinese*)
 - Wechat Group (*Chinese*) : Broker wechat to add you into the user group.
 
